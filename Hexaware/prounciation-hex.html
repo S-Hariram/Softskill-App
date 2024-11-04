@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pronunciation Practice</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background: #f0f4f8;
+            flex-direction: column;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        #word-input, #start-speech {
+            display: block;
+            margin: 10px auto;
+            padding: 10px;
+            font-size: 1.2em;
+            width: 80%;
+            max-width: 300px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Microphone Button Styling */
+        .mic-button {
+            width: 60px;
+            height: 60px;
+            background-color: #4285f4;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px auto;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .mic-button.active {
+            background-color: #1a73e8;
+            transform: scale(1.1);
+        }
+
+        /* Microphone Icon Styling */
+        .mic-icon {
+            width: 30px;
+            height: 30px;
+            fill: white;
+        }
+
+        /* Feedback Styling */
+        #feedback-container {
+            margin-top: 20px;
+            font-size: 1.1em;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .correct {
+            color: green;
+        }
+
+        .incorrect {
+            color: red;
+        }
+
+        .pronunciation {
+            margin-top: 10px;
+            font-size: 1em;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <h1>Pronunciation Practice</h1>
+    <label for="word-input">Word to Pronounce:</label>
+    <input type="text" id="word-input" placeholder="Type a word here">
+    
+    <!-- Microphone Button -->
+    <div class="mic-button" id="mic-button">
+        <!-- SVG Icon for the Mic -->
+        <svg class="mic-icon" viewBox="0 0 24 24">
+            <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3s-3 1.34-3 3v6c0 1.66 1.34 3 3 3zm5-3c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>
+        </svg>
+    </div>
+
+    <div id="speech-result"></div>
+    <div id="feedback-container"></div>
+    <div id="pronunciation-container" class="pronunciation"></div>
+
+    <script>
+        const micButton = document.getElementById('mic-button');
+
+        // Add active state to mic button when recording
+        function toggleMicActiveState(active) {
+            if (active) {
+                micButton.classList.add('active');
+            } else {
+                micButton.classList.remove('active');
+            }
+        }
+
+        // Speech Recognition Setup
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        if (SpeechRecognition) {
+            const recognition = new SpeechRecognition();
+            recognition.lang = 'en-US';
+
+            recognition.onstart = () => {
+                toggleMicActiveState(true); // Activate mic button style when recording
+            };
+
+            recognition.onend = () => {
+                toggleMicActiveState(false); // Deactivate mic button style when done
+            };
+
+            recognition.onresult = async (event) => {
+                const transcript = event.results[0][0].transcript;
+                const wordToCheck = document.getElementById('word-input').value; // Get the word to check pronunciation for
+
+                document.getElementById('speech-result').textContent = `You said: ${transcript}`;
+
+                // Check if the input word is valid
+                const isValid = await isValidWord(wordToCheck);
+                const feedbackContainer = document.getElementById('feedback-container');
+                const pronunciationContainer = document.getElementById('pronunciation-container');
+                if (!isValid) {
+                    feedbackContainer.innerHTML = `<span class="incorrect">The word '${wordToCheck}' is not in the dictionary. Please try another word.</span>`;
+                    pronunciationContainer.textContent = ''; // Clear pronunciation if invalid
+                    return;
+                }
+
+                // Fetch and display pronunciation
+                const pronunciation = await fetchPronunciation(wordToCheck);
+                pronunciationContainer.textContent = pronunciation ? `Correct pronunciation: ${pronunciation}` : '';
+
+                // Pronounce the word aloud
+                if (pronunciation) {
+                    speakWord(wordToCheck);
+                }
+
+                // Check pronunciation
+                const result = checkPronunciation(wordToCheck, transcript);
+                feedbackContainer.innerHTML = result.correct ? 
+                    `<span class="correct">${result.feedback}</span>` : 
+                    `<span class="incorrect">${result.feedback}</span>`;
+            };
+
+            micButton.addEventListener('click', () => {
+                document.getElementById('feedback-container').innerHTML = ''; // Clear previous feedback
+                recognition.start();
+            });
+        } else {
+            console.warn("SpeechRecognition API is not supported in this browser.");
+        }
+
+        // Function to check if the word is valid using the Dictionary API
+        async function isValidWord(word) {
+            try {
+                const response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`);
+                if (!response.ok) throw new Error('Dictionary API request failed.');
+
+                const data = await response.json();
+                return Array.isArray(data) && data.length > 0;
+            } catch (error) {
+                console.error('Error validating word:', error);
+                return false;
+            }
+        }
+
+        // Function to fetch pronunciation from the Dictionary API
+        async function fetchPronunciation(word) {
+            try {
+                const response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`);
+                if (!response.ok) throw new Error('Pronunciation API request failed.');
+
+                const data = await response.json();
+                const phonetics = data[0].phonetics; // Access phonetics
+                if (phonetics.length > 0 && phonetics[0].text) {
+                    return phonetics[0].text; // Return the pronunciation text
+                }
+            } catch (error) {
+                console.error('Error fetching pronunciation:', error);
+            }
+            return null; // Return null if unable to fetch pronunciation
+        }
+
+        // Function to pronounce the word aloud
+        function speakWord(word) {
+            const utterance = new SpeechSynthesisUtterance(word);
+            utterance.lang = 'en-US'; // Set the language
+            window.speechSynthesis.speak(utterance); // Speak the word
+        }
+
+        // Function to check pronunciation and provide feedback
+        function checkPronunciation(correctWord, spokenWord) {
+            const normalizedCorrect = correctWord.toLowerCase().replace(/[^a-z]/g, '');
+            const normalizedSpoken = spokenWord.toLowerCase().replace(/[^a-z]/g, '').trim();
+
+            if (normalizedCorrect === normalizedSpoken) {
+                return { correct: true, feedback: "Your pronunciation is correct!" };
+            }
+
+            let feedback = "Your pronunciation is not correct. Please try again.";
+            
+            if (normalizedSpoken.startsWith(normalizedCorrect.substring(0, normalizedCorrect.length - 1))) {
+                feedback = "You're very close! Just refine the ending sounds.";
+            } else if (normalizedSpoken.endsWith(normalizedCorrect.substring(1))) {
+                feedback = "You're close! Focus on the beginning sounds.";
+            } else if (spokenWord.length < correctWord.length / 2) {
+                feedback = "Your speech is too short. Try to pronounce the word clearly.";
+            } else if (spokenWord.includes("uh") || spokenWord.includes("um")) {
+                feedback = "Avoid using filler sounds like 'uh' or 'um'. Focus on the word.";
+            } 
+            return { correct: false, feedback };
+        }
+    </script>
+</body>
+</html>

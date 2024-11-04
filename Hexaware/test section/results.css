@@ -1,0 +1,301 @@
+/* General Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f0f4f8;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Header Styles */
+h1 {
+    font-size: 36px;
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 40px;
+    font-weight: 700;
+}
+
+/* Results Container */
+#resultsContainer {
+    margin-bottom: 40px;
+}
+
+/* Each Result Card */
+.result-card {
+    background-color: #ffffff;
+    border: 1px solid #e1e4e8; /* Border for separation */
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px; /* Space between cards */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Bold Heading for Each Result */
+.result-card h3 {
+    font-size: 24px;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-bottom: 2px solid #28a745;
+    padding-bottom: 10px;
+}
+
+/* Section Text */
+.result-card p {
+    font-size: 18px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+/* Score Section Styles */
+#scoreSection {
+    background-color: #fff;
+    border: 1px solid #e1e4e8; /* Border for score section */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    margin-top: 40px; /* Space above the score section */
+}
+
+h2 {
+    font-size: 28px;
+    color: #34495e;
+    font-weight: 700;
+    border-bottom: 2px solid #ffdd57;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* Score Text */
+#scoreText {
+    font-size: 22px;
+    color: #28a745;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+/* Answers List */
+#answersList {
+    list-style-type: none;
+    padding-left: 0;
+    font-size: 18px;
+}
+
+/* Button Styles */
+button {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #28a745;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    #scoreText {
+        font-size: 18px;
+    }
+
+    .result-card h3 {
+        font-size: 20px;
+    }
+
+    .result-card p {
+        font-size: 16px;
+    }
+}
+/* General Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f0f4f8;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Header Styles */
+h1 {
+    font-size: 36px;
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 40px;
+    font-weight: 700;
+}
+
+/* Results Container */
+#resultsContainer {
+    margin-bottom: 40px;
+}
+
+/* Each Result Card */
+.result-card {
+    background-color: #ffffff;
+    border: 1px solid #e1e4e8; /* Border for separation */
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px; /* Space between cards */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Bold Heading for Each Result */
+.result-card h3 {
+    font-size: 24px;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-bottom: 2px solid #28a745;
+    padding-bottom: 10px;
+}
+
+/* Section Text */
+.result-card p {
+    font-size: 18px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+/* Score Section Styles */
+#scoreSection {
+    background-color: #fff;
+    border: 1px solid #e1e4e8; /* Border for score section */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    margin-top: 40px; /* Space above the score section */
+}
+
+h2 {
+    font-size: 28px;
+    color: #34495e;
+    font-weight: 700;
+    border-bottom: 2px solid #ffdd57;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* Score Text */
+#scoreText {
+    font-size: 22px;
+    color: #28a745;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+/* Answers List */
+#answersList {
+    list-style-type: none;
+    padding-left: 0;
+    font-size: 18px;
+}
+
+/* Button Styles */
+button {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #28a745;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+/* Back Button Styles */
+#backButton {
+    background-color: #007bff;
+    color: #fff;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+#backButton:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    #scoreText {
+        font-size: 18px;
+    }
+
+    .result-card h3 {
+        font-size: 20px;
+    }
+
+    .result-card p {
+        font-size: 16px;
+    }
+}

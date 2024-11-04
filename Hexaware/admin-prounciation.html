@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Pronunciation Interface</title>
+    <link rel="stylesheet" href="./admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1>Admin Pronunciation Interface</h1>
+    </header>
+    <div class="container">
+        <!-- Admin Interface for Lesson Upload -->
+        <div id="admin-interface">
+            <h2>Upload New Pronunciation Lesson</h2>
+            <form id="upload-lesson-form">
+                <label for="lesson-title">Lesson Title:</label>
+                <input type="text" id="lesson-title" required>
+                
+                <label for="lesson-difficulty">Difficulty:</label>
+                <select id="lesson-difficulty" required>
+                    <option value="Easy">Easy</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Hard">Hard</option>
+                </select>
+
+                <label for="file-upload">Upload File (PDF/DOC/DOCX/Audio):</label>
+                <input type="file" id="file-upload" accept=".pdf, .doc, .docx, .mp3, .wav" required>
+                
+                <button type="submit">Upload Lesson</button>
+            </form>
+        </div>
+
+        <!-- Display Uploaded Lessons -->
+        <div id="uploaded-lessons">
+            <h2>Uploaded Pronunciation Lessons</h2>
+            <div id="lessons-container">
+                <!-- Uploaded lessons will be displayed here -->
+            </div>
+        </div>
+
+        <!-- Display Content of Selected Lesson -->
+        <div id="lesson-content" class="hidden">
+            <div class="content-header">
+                <h2>Lesson Content</h2>
+                <button id="close-content" class="close-button"><i class="fas fa-times"></i> Close</button>
+            </div>
+            <div id="content-container">
+                <!-- Lesson content will be displayed here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- External JavaScript files -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.4.2/mammoth.browser.min.js"></script>
+    <script src="./admin-prounciation.js"></script>
+</body>
+</html>

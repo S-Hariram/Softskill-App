@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Creator</title>
+    <link rel="stylesheet" href="./admin-test-creation.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Create Tests</h1>
+        <div class="tabs">
+            <button class="tab-button" onclick="showSection('vocabulary')">Vocabulary</button>
+            <button class="tab-button" onclick="showSection('speech')">Speech</button>
+            <button class="tab-button" onclick="showSection('pronunciation')">Pronunciation</button>
+        </div>
+
+        <div id="vocabulary" class="section" style="display:none;">
+            <h2>Create Vocabulary Test</h2>
+            <form id="vocabForm">
+                <label for="vocabLesson">Lesson/Topic:</label>
+                <input type="text" id="vocabLesson" placeholder="Enter lesson or topic" required><br><br>
+
+                <label for="vocabQuestion">Question:</label>
+                <input type="text" id="vocabQuestion" placeholder="Enter your question" required><br><br>
+
+                <label for="vocabOption1">Option 1:</label>
+                <input type="text" id="vocabOption1"><br><br>
+
+                <label for="vocabOption2">Option 2:</label>
+                <input type="text" id="vocabOption2"><br><br>
+
+                <label for="vocabOption3">Option 3:</label>
+                <input type="text" id="vocabOption3"><br><br>
+
+                <label for="vocabOption4">Option 4:</label>
+                <input type="text" id="vocabOption4"><br><br>
+
+                <label for="vocabCorrectAnswer">Correct Answer (1-4):</label>
+                <input type="number" id="vocabCorrectAnswer" min="1" max="4" required><br><br>
+
+                <label for="vocabDifficulty">Difficulty:</label>
+                <select id="vocabDifficulty" required>
+                    <option value="Easy">Easy</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Hard">Hard</option>
+                </select><br><br>
+
+                <button type="button" id="addVocabQuestion">Add Question</button>
+            </form>
+            <h2>Vocabulary Questions</h2>
+            <div id="vocabList"></div>
+        </div>
+
+        <!-- Corrected Speech Section - Closing div was misplaced -->
+        <div id="speech" class="section" style="display:none;">
+            <h2>Create Speech Test</h2>
+            <form id="speechForm">
+                <label for="speechLesson">Lesson/Topic:</label>
+                <input type="text" id="speechLesson" placeholder="Enter lesson or topic" required><br><br>
+                <label for="speechQuestion">Question:</label>
+                <input type="text" id="speechQuestion" placeholder="Enter your question" required><br><br>
+                <label for="speechOption1">Option 1:</label>
+                <input type="text" id="speechOption1" required><br><br>
+                <label for="speechOption2">Option 2:</label>
+                <input type="text" id="speechOption2" required><br><br>
+                <label for="speechOption3">Option 3:</label>
+                <input type="text" id="speechOption3" required><br><br>
+                <label for="speechOption4">Option 4:</label>
+                <input type="text" id="speechOption4" required><br><br>
+                <label for="speechCorrectAnswer">Correct Answer (1-4):</label>
+                <input type="number" id="speechCorrectAnswer" min="1" max="4" required><br><br>
+                <label for="speechDifficulty">Difficulty:</label>
+                <select id="speechDifficulty" required>
+                    <option value="Easy">Easy</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Hard">Hard</option>
+                </select><br><br>
+                <button type="button" id="addSpeechQuestion">Add Question</button>
+            </form>
+            <h2>Speech Questions</h2>
+            <div id="speechList"></div>
+        </div>
+
+        <div id="pronunciation" class="section" style="display:none;">
+            <h2>Create Pronunciation Test</h2>
+            <form id="pronunciationForm">
+                <label for="pronunciationLesson">Lesson/Topic:</label>
+                <input type="text" id="pronunciationLesson" placeholder="Enter lesson or topic" required><br><br>
+        
+                <label for="pronunciationQuestion">Question:</label>
+                <input type="text" id="pronunciationQuestion" placeholder="e.g., Spell the word 'cat'" required><br><br>
+        
+                <label for="pronunciationDifficulty">Difficulty:</label>
+                <select id="pronunciationDifficulty" required>
+                    <option value="Easy">Easy</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Hard">Hard</option>
+                </select><br><br>
+        
+                <button type="button" id="addPronunciationQuestion">Add Question</button>
+            </form>
+            <h2>Pronunciation Questions</h2>
+            <div id="pronunciationList"></div>
+        </div>
+        
+    <script src="./admin-test-creation.js"></script>
+    <script>
+        function showSection(section) {
+            const sections = ['vocabulary', 'speech', 'pronunciation'];
+            sections.forEach(s => {
+                document.getElementById(s).style.display = (s === section) ? 'block' : 'none';
+            });
+        }
+    </script>
+</body>
+</html>

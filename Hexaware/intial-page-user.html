@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="./styles.css">
+    <style>
+        /* Basic styling for the circular button */
+        .logo {
+            height: 80px;
+            width: auto; /* Adjust width for better responsiveness */
+            margin: 20px auto; /* Centering the logo */
+            display: block; /* Display block to ensure it centers */
+        }
+
+        .app-title {
+            font-family: 'Arial', sans-serif; /* Replace with your preferred font */
+            font-size: 2rem; /* Larger font size for the title */
+            color: whitesmoke; /* Dark color for better visibility */
+            text-align: center; /* Center title */
+            margin: 10px 0; /* Margin for spacing */
+            background-color: #2c3e50;
+        }
+
+        .welcome-message {
+            font-family: 'Arial', sans-serif; /* Font style for the welcome message */
+            font-size: 1.5rem; /* Font size for the welcome message */
+            color: white; /* A lighter color for differentiation */
+            text-align: center; /* Center the welcome message */
+            margin: 5px 0; /* Margin for spacing */
+            background: #2c3e50;
+        }
+
+        /* Header styling */
+        header {
+            display: flex;
+            align-items: center; /* Align items vertically */
+            justify-content: space-between; /* Space between logo and title */
+            padding: 10px 20px; /* Added padding */
+            background-color: #2c3e50; /* Header background */
+            color: #ecf0f1; /* Text color */
+        }
+
+        h1 {
+            font-family: 'Arial', sans-serif; /* Updated font */
+            font-size: 2rem; /* Font size */
+            margin: 0; /* Remove default margin */
+            flex-grow: 1; /* Allow title to take remaining space */
+            text-align: center; /* Center the title */
+            color: #ecf0f1; /* Title color */
+        }
+
+        .circular-button {
+            cursor: pointer;
+            border: none;
+            background: none;
+            font-size: 24px;
+            position: relative; /* Position relative for dropdown */
+        }
+
+        /* Profile Menu Styling */
+        #profile-menu {
+            position: absolute;
+            top: 60px; /* Adjusted to be below the header */
+            right: 20px;
+            width: 200px;
+            background-color: #2c3e50;
+            color: white;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            z-index: 1000;
+            display: none; /* Initially hidden */
+        }
+
+        /* Styles for individual menu items */
+        #profile-menu p {
+            margin: 0;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-size: larger;
+            color: white;
+        }
+
+        #profile-menu button {
+            width: 100%;
+            padding: 8px;
+            background-color: white;
+            color: black;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        #logout-button {
+            background-color: white;
+            color: black;
+            border-radius: 50px;
+        }
+
+        /* Hero Image Styling */
+        .hero {
+            width: 100%;
+            max-width: 450px;
+            height: 450px;
+            display: block;
+            margin: 20px auto;
+            border-radius: 10px;
+        }
+
+        /* Stacked Cards Styling */
+        .card-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center the cards */
+            margin: 20px 0; /* Margin for spacing */
+        }
+
+        .card {
+            background: linear-gradient(135deg, #4caf50, #81c784); /* Gradient background */
+            border-radius: 12px; /* Rounded corners */
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+            width: 90%; /* Full width on mobile */
+            max-width: 400px; /* Max width for larger screens */
+            margin: 15px 0; /* Spacing between cards */
+            padding: 20px; /* Padding inside the card */
+            color: #fff; /* Text color */
+            text-align: center; /* Center text */
+            cursor: pointer; /* Cursor pointer for clickable cards */
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animation for hover */
+        }
+
+        .card:hover {
+            transform: translateY(-5px); /* Lift effect on hover */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Increased shadow on hover */
+        }
+
+        .card h3 {
+            margin: 0; /* No margin for the heading */
+            font-size: 1.5rem; /* Font size */
+        }
+
+        .card p {
+            margin-top: 10px; /* Margin for paragraph text */
+            font-size: 1rem; /* Paragraph font size */
+        }
+
+        /* Importance of Soft Skills Section */
+        .importance-section {
+            background-color: #f8f9fa; /* Light background for contrast */
+            padding: 20px; /* Padding */
+            border-radius: 10px; /* Rounded corners */
+            margin: 20px 0; /* Margin for spacing */
+            text-align: center; /* Center the text */
+        }
+
+        .importance-section h2 {
+            color: #2c3e50; /* Title color */
+            margin-bottom: 10px; /* Margin below title */
+        }
+
+        .importance-section p {
+            font-size: 1rem; /* Font size for paragraph */
+            color: #333; /* Darker text color */
+            line-height: 1.5; /* Line height for readability */
+        }
+
+        /* Footer Styling */
+        footer {
+            background-color: #2c3e50; /* Footer background */
+            color: white; /* Text color */
+            text-align: center; /* Center text */
+            padding: 10px 0; /* Padding */
+            position: relative; /* Relative position */
+            bottom: 0; /* Stick to bottom */
+            width: 100%; /* Full width */
+            margin-top: 20px; /* Margin above footer */
+        }
+
+        /* Optional: Adjusting for different screen sizes */
+        @media (max-width: 600px) {
+            .card {
+                width: 95%; /* Adjust width for smaller screens */
+            }
+
+            .card h3 {
+                font-size: 1.25rem; /* Adjust heading size */
+            }
+
+            .card p {
+                font-size: 0.9rem; /* Adjust paragraph size */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <!-- Circular Button for Profile -->
+            <div class="circular-button" onclick="toggleProfileMenu()">
+                <span>☰</span> <!-- Toggle button icon -->
+            </div>
+
+            <img src="./softskilllogo.jpeg" alt="App Logo" class="logo">
+
+            <h1 class="app-title">Soft Skill Enhancement App</h1>
+            <h1 id="welcome-message" class="welcome-message"></h1> <!-- Welcome Message -->
+        </header>
+
+        <!-- Profile Menu Dropdown -->
+        <div id="profile-menu">
+            <p>Full Name: <span id="full-name-display"></span></p>
+            <p>Email: <span id="email-display"></span></p>
+            <button id="logout-button">Logout</button>
+        </div>
+
+        <!-- Navigation Menu -->
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="user-vocabulary-lesson.html">Vocabulary Lessons</a></li>
+                <li><a href="user-speech-lesson.html">Speech Lessons</a></li>
+                <li><a href="user-pronunciation.html">Pronunciation Lessons</a></li>
+                <li><a href="./test section/user-test.html">Practice Tests</a></li>
+                <li><a href="./test section/results.html">Test Reports</a></li>
+            </ul>
+
+            <!-- Search Bar Section -->
+            <div class="search-bar1">
+                <input type="text" id="search-bar1" placeholder="Search for vocabulary, speech, or pronunciation..." />
+                <button id="search-button">Search</button>
+                <button id="clear-button">Clear</button>
+
+                <!-- Hero Image within the search bar section -->
+                <img src="./Hero.png" alt="Learning Image" class="hero">
+            </div>
+        </nav>
+
+        <!-- Initial View Section -->
+        <div id="initial-view">
+            <p>Start your learning journey by searching for a word above.</p>
+        </div>
+
+        <!-- Stacked Cards Section -->
+        <div class="card-container">
+            <div class="card">
+                <h3>Vocabulary Enhancement</h3>
+                <p>Expand your vocabulary with interactive lessons.</p>
+            </div>
+            <div class="card">
+                <h3>Speech Practice</h3>
+                <p>Improve your speech delivery with our tools.</p>
+            </div>
+            <div class="card">
+                <h3>Pronunciation Guide</h3>
+                <p>Perfect your pronunciation with guided exercises.</p>
+            </div>
+        </div>
+
+        <!-- Importance of Soft Skills Section -->
+        <div class="importance-section">
+            <h2>The Importance of Soft Skills</h2>
+            <p>Soft skills are essential for workplace success. They encompass communication, teamwork, and problem-solving abilities that help employees work effectively with others. Developing these skills leads to better job performance, increased productivity, and improved relationships in the workplace. Investing time in soft skill development enhances career prospects and contributes to a more positive work environment.</p>
+        </div>
+
+        <!-- Footer Section -->
+        <footer>
+            <p>&copy; 2024 Soft Skill Enhancement App. All rights reserved.</p>
+            <p>Empowering individuals through soft skill development.</p>
+        </footer>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+
+</html>

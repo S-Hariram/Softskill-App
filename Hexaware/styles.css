@@ -1,0 +1,620 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+header {
+    background: #28a745; /* Primary green color */
+    color: #fff;
+    padding: 20px 0; /* Adjusted padding for spacing */
+    text-align: center;
+    position: relative;
+    overflow: hidden; /* Prevents overflow from animation */
+    
+
+}
+/* Image Styles */
+.hero {
+    position: absolute;
+    right: 200px;
+    top: 70%;
+    transform: translateY(-50%);
+    height: 400px;
+    width: 400px;
+}
+
+/* Profile Button */
+.profile-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.profile-button:hover {
+    transform: scale(1.1); /* Scale effect on hover */
+}
+
+/* Headings */
+h1 {
+    margin: 0;
+    font-size: 32px;
+    font-family:f;
+    animation: fadeIn 1s ease; /* Fade-in effect */
+    font-size: x-large;
+    font-style: italic;
+}
+
+
+h2 {
+    color: #000345; /* Navy blue for section headings */
+    border-bottom: 2px solid #ffd55a; /* Yellow underline */
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* Navigation Menu */
+.nav-menu {
+    margin: 20px 0;
+    background:#000435;
+    align-items: baseline;
+    height:550px;
+}
+
+.nav-menu ul {
+    padding: 0;
+    list-style: none;
+    background: #000435;
+
+    
+}
+
+.nav-menu li {
+    display: inline-block;
+    padding: 20px 0px ;
+    margin: 10px 15px;
+    height: 15px;
+
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    transition: background 0.3s ease;
+    height:15px;
+    
+}
+
+.nav-menu a:hover {
+    background: #28a745; /* Light green on hover */
+}
+
+/* Profile Menu */
+.profile-menu {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: 70px; /* Position below the profile button */
+    right: 20px;
+    background-color: #fff;
+    color: #333;
+    border-radius: 5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    animation: fadeIn 0.3s ease; /* Fade-in effect for the menu */
+    z-index: 10; /* Ensure it appears above other elements */
+}
+
+.profile-menu.hidden {
+    display: none; /* Use this class to hide the menu */
+}
+
+/* Button Styles */
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #28a745; /* Primary green color */
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background-color: #218838; /* Darker green for hover effect */
+}
+
+/* Section Styles */
+section {
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    padding: 20px;
+    transition: transform 0.3s ease; /* Animation on hover */
+}
+
+section:hover {
+    transform: translateY(-2px); /* Slight lift effect on hover */
+}
+
+/* List Styles */
+ul {
+    list-style: disc;
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+/* Search and Filter Styles */
+#search-filter-section {
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#search-bar {
+    flex: 1;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 50px;
+    justify-content: center;
+    width: 200px;
+    height: 50px;
+    
+}
+#search-bar1 {
+    display: flex; /* Use flexbox for alignment */
+    align-items: center; /* Center align items vertically */
+    flex: 1; /* Allow the search bar to grow */
+    padding: 10px; /* Add padding for spacing */
+    border: 2px solid #ddd; /* Light border around the search bar */
+    border-radius: 4px; /* Rounded corners for the search bar */
+    height: 20px; /* Height of the search bar */
+    margin-right: 10px; /* Add margin to separate from buttons */
+    width:500px;
+}
+
+#search-button1 {
+    padding: 10px 20px; /* Padding for the search button */
+    border: none; /* Remove default border */
+    border-radius: 20px; /* Rounded corners */
+    color: white; /* Text color */
+    background-color: #28a745; /* Primary green color */
+    cursor: pointer; /* Change cursor on hover */
+    margin-left: 10px; /* Space between search bar and button */
+    transition: background 0.3s ease; /* Smooth transition */
+    height: 50px; /* Match button height to the search bar */
+}
+
+#search-button1:hover {
+    background-color: #218838; /* Darker green for hover effect */
+}
+
+#clear-button1 {
+    padding: 10px 20px; /* Padding for the clear button */
+    border: none; /* Remove default border */
+    border-radius: 20px; /* Rounded corners */
+    color: white; /* Text color */
+    background-color: #28a745; /* Primary green color */
+    cursor: pointer; /* Change cursor on hover */
+    margin-left: 10px; /* Space between search button and clear button */
+    transition: background 0.3s ease; /* Smooth transition */
+    height: 50px; /* Match button height to the search bar */
+}
+
+#clear-button1:hover {
+    background-color: #218838; /* Darker green for hover effect */
+}
+
+
+
+#difficulty-filter {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 50px;
+    border: 1px solid #ddd;
+}
+
+/* Show More Examples Button Styles */
+#show-more-examples {
+    display: inline-block;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #28a745; /* Primary green color */
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background 0.3s ease;
+}
+
+#show-more-examples:hover {
+    background-color: #218838; /* Darker green for hover effect */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    .search-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #search-bar {
+        margin-bottom: 10px;
+        width: 100%; /* Full width for smaller screens */
+    }
+
+    #search-button {
+        width: 100%; /* Full width for smaller screens */
+    }
+
+    header {
+        text-align: left; /* Align left for smaller screens */
+    }
+
+    .profile-button {
+        top: 10px;
+        right: 10px;
+    }
+    .hero{
+        width:100%;
+        align-items: right;
+    }
+}
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+header {
+    background: #28a745; /* Primary green color */
+    color: #fff;
+    padding: 15px 0; /* Increased padding for spacing */
+    text-align: center;
+}
+
+h1 {
+    margin: 0;
+    font-size: 28px;
+    background-color: #28a745;
+    color: white;
+    text-align: center;
+}
+
+/* Button Styles */
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #28a745; /* Primary green color */
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #218838; /* Darker green for hover effect */
+}
+
+.hidden {
+    display: none;
+}
+
+/* Initial View Styles */
+#initial-view {
+    margin-bottom: 30px;
+}
+
+.start-lesson-btn {
+    display: block;
+    margin: 20px auto;
+    font-size: 18px;
+    background-color: #28a745; /* Primary green color */
+}
+
+.start-lesson-btn:hover {
+    background-color: #218838; /* Darker green for hover effect */
+}
+
+/* Section Styles */
+section {
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+h2 {
+    color: navy; /* Navy blue for section headings */
+    border-bottom: 2px solid #ffd55a; /* Yellow underline */
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* List Styles */
+ul {
+    list-style: disc;
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+/* Search and Filter Styles */
+#search-filter-section {
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+/* Centering the Search Bar */
+.search-container {
+    display: flex;
+    justify-content: center; /* Center align the container */
+    align-items: center;
+    margin: 30px 0; /* Space between header and search */
+}
+
+#search-bar {
+    width: 300px; /* Medium width similar to Google */
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 50px;
+    margin-right: 10px; /* Space between search bar and button */
+}
+
+#search-button {
+    margin-left: 10px;
+    margin-top: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 50px;
+    font-size: 20PX;
+    color: #fff;
+    background-color: #28a745; /* Primary green color */
+    cursor: pointer;
+}
+
+#search-button:hover {
+    color:#0056b3; /* Darker green for hover effect */
+}
+
+#clear-button {
+    margin-left: 15px;
+
+    padding: 10px 20px;
+    border: none;
+    font-size: 20px;
+    color: white; /* Primary green color */
+    border-radius: 50px;
+    background-color:#28a745;
+    cursor: pointer;
+}
+
+#clear-button:hover {
+    color: #0056b3; /* Darker blue for hover effect */
+}
+
+#difficulty-filter {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 50px;
+    border: 1px solid #ddd;
+}
+
+/* Show More Examples Button Styles */
+#show-more-examples {
+    display: inline-block;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #28a745; /* Primary green color */
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+#show-more-examples:hover {
+    background-color: #218838; /* Darker green for hover effect */
+}
+/* Animation Keyframes */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.profile-button {
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Add more styling as per your design requirements */
+
+.circular-button {
+    width: 50px; /* Set the width of the button */
+    height: 50px; /* Set the height of the button */
+    background-color: #007BFF; /* Background color of the button */
+    color: white; /* Text color */
+    border-radius: 50%; /* Make the button circular */
+    text-align: center; /* Center the text horizontally */
+    line-height: 50px; /* Center the text vertically */
+    font-size: 20px; /* Font size for the icon/text */
+    font-weight: bold; /* Bold text */
+    cursor: pointer; /* Cursor indicates it's clickable */
+    position: absolute; /* Positioning the button */
+    right: 20px; /* Distance from the right */
+    top: 20px; /* Distance from the top */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transition for background color and scale */
+}
+
+.circular-button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+    transform: scale(1.1); /* Slightly enlarge on hover */
+}
+
+.circular-button:active {
+    transform: scale(0.95); /* Slightly shrink when clicked */
+}
+/* General Styles */
+.container {
+    padding: 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Circular Button Styles */
+.circular-button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #4CAF50; /* Adjust color as needed */
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+/* Profile Menu Styles */
+.profile-menu {
+    position: absolute; /* Positioned relative to the nearest positioned ancestor */
+    top: 60px; /* Adjust this based on your header height */
+    right: 20px; /* Adjust this for placement */
+    width: 200px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    z-index: 1000; /* Make sure it appears above other content */
+}
+
+.hidden {
+    display: none;
+}
+
+.visible {
+    display: block; /* or flex, grid, etc. depending on your layout */
+}
+
+/* Add styles for the profile menu */
+.profile-menu {
+    position: absolute; /* Adjust as necessary */
+    background-color: white; /* Ensure it's visible against the background */
+    border: 1px solid #ccc; /* Optional styling */
+    padding: 10px; /* Optional styling */
+}
+
+
+/* Navigation Menu Styles */
+.nav-menu {
+    margin-top: 20px;
+}
+
+/* Search Results Section */
+.search-results {
+    margin-top: 20px;
+}
+
+.search-bar {
+    margin-bottom: 20px;
+}
+
+/* Additional Styles for other elements as needed */
+
+/* Wrapper for the progress bar */
+.progress-bar-wrapper {
+    background-color: #e9ecef;
+    border-radius: 5px;
+    width: 100%; /* Full width */
+    height: 30px; /* Adjust height as needed */
+    margin: 1rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Actual progress bar that fills up */
+#progress-bar {
+    background-color: #28a745; /* Green color for progress */
+    height: 100%;
+    width: 0%; /* Start at 0, dynamically changed */
+    transition: width 0.4s ease-in-out;
+    border-radius: 5px 0 0 5px; /* Rounded left side, straight right */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem; /* Adjust font size for readability */
+}
+
+/* Progress text (e.g. 50% Complete) */
+#progress-text {
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    color: #333;
+    text-align: center;
+}
+/* Progress fill inside the bar */
+.progress-fill {
+    height: 100%;
+    background-color: #007bff;
+    width: 0%; /* Start at 0% */
+    border-radius: 5px;
+    transition: width 0.4s ease; /* Smooth fill transition */
+}

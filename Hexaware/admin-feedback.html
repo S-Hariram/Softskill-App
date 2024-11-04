@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Feedback View</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #4285F4;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #ffffff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+        }
+
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #4285F4;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+
+        #admin-section {
+            max-width: 800px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .feedback-item {
+            border-bottom: 1px solid #e0e0e0;
+            padding: 15px 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .feedback-item:last-child {
+            border-bottom: none;
+        }
+
+        .feedback-header {
+            font-weight: 500;
+            margin-bottom: 5px;
+            color: #4285F4;
+        }
+
+        .feedback-content {
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            font-size: 0.9rem;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Admin Feedback View</h1>
+    </header>
+    <nav>
+        <a href="feedback.html">Feedback Form</a>
+        <a href="admin-feedback.html">Admin Feedback View</a>
+    </nav>
+    <div id="admin-section">
+        <div id="feedback-list"></div>
+    </div>
+    <footer>
+        &copy; 2024 Softskill Enhancement App
+    </footer>
+
+    <script>
+        // IndexedDB Setup
+        const dbName = 'FeedbackDB';
+        const storeName = 'feedbacks';
+        let db;
+
+        // Open IndexedDB
+        const request = indexedDB.open(dbName, 1);
+
+        request.onupgradeneeded = (event) => {
+            db = event.target.result;
+            const objectStore = db.createObjectStore(storeName, { keyPath: 'id', autoIncrement: true });
+            objectStore.createIndex('userId', 'userId', { unique: false });
+        };
+
+        request.onsuccess = (event) => {
+            db = event.target.result;
+            loadFeedback(); // Load feedback entries when DB is opened
+        };
+
+        request.onerror = (event) => {
+            console.error('Database error: ', event.target.error);
+        };
+
+        // Load Feedback from IndexedDB
+        function loadFeedback() {
+            const transaction = db.transaction([storeName], 'readonly');
+            const objectStore = transaction.objectStore(storeName);
+            const request = objectStore.getAll();
+
+            request.onsuccess = (event) => {
+                const feedbackList = event.target.result;
+                const feedbackListDiv = document.getElementById('feedback-list');
+                feedbackListDiv.innerHTML = ''; // Clear previous feedback
+
+                if (feedbackList.length === 0) {
+                    feedbackListDiv.innerHTML = '<p>No feedback available.</p>';
+                } else {
+                    feedbackList.forEach(feedback => {
+                        const feedbackItem = document.createElement('div');
+                        feedbackItem.classList.add('feedback-item');
+                        feedbackItem.innerHTML = `
+                            <div class="feedback-header">Name: ${feedback.name}</div>
+                            <div class="feedback-content"><strong>Email:</strong> ${feedback.email}</div>
+                            <div class="feedback-content"><strong>Feedback:</strong> ${feedback.feedback}</div>
+                            <div class="feedback-content"><strong>Submitted At:</strong> ${new Date(feedback.submittedAt).toLocaleString()}</div>
+                        `;
+                        feedbackListDiv.appendChild(feedbackItem);
+                    });
+                }
+            };
+
+            request.onerror = () => {
+                console.error('Error retrieving feedback.');
+            };
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,209 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+header {
+    background: #28a745; /* Primary green color */
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+h1 {
+    margin: 0;
+    font-size: 28px;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #28a745; /* Primary green color */
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #218838; /* Darker green for hover effect */
+}
+
+.hidden {
+    display: none;
+}
+
+/* Admin Interface Styles */
+#admin-interface {
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+#upload-lesson-form {
+    display: flex;
+    flex-direction: column;
+}
+
+#upload-lesson-form label {
+    margin: 10px 0 5px;
+}
+
+#upload-lesson-form input,
+#upload-lesson-form select {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#upload-lesson-form button {
+    background-color: #28a745;
+}
+
+#uploaded-lessons {
+    margin-top: 30px;
+}
+
+.lesson-item {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.lesson-item h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.lesson-item .difficulty {
+    font-style: italic;
+    color: #555;
+    margin-left: 10px;
+}
+
+.lesson-item .actions {
+    display: flex;
+    align-items: center;
+}
+
+.lesson-item button {
+    margin-left: 10px;
+    background-color: #dc3545; /* Red color for delete button */
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.lesson-item button:hover {
+    background-color: #c82333; /* Darker red for hover effect */
+}
+
+/* Popup styling */
+#lesson-content {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 80%;
+    max-width: 800px; /* Increased width for better readability */
+    max-height: 80%;
+    overflow: hidden; /* Prevent horizontal scroll */
+    padding: 20px;
+    z-index: 1000;
+}
+
+.content-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.close-button {
+    background-color: #f44336; /* Red background */
+    color: white; /* White text */
+    border: none; /* No border */
+    padding: 10px 15px; /* Padding around the text */
+    cursor: pointer; /* Pointer cursor */
+    float: right; /* Align to the right */
+    font-size: 16px; /* Font size */
+    border-radius: 5px; /* Rounded corners */
+}
+
+.close-button:hover {
+    background-color: #d32f2f; /* Darker red on hover */
+}
+
+#content-container {
+    max-height: calc(80vh - 80px); /* Ensure content is scrollable if too long */
+    overflow-y: auto; /* Vertical scrolling */
+    padding: 10px;
+    background-color: #fff;
+    font-size: 16px; /* Adjust font size if needed */
+    line-height: 1.6; /* Ensure readability */
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+.pagination-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    background-color: #28a745;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.pagination-btn.hidden {
+    display: none;
+}
+
+.pagination-btn:hover {
+    background-color: #218838;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    .search-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #search-bar {
+        margin-bottom: 10px;
+    }
+
+    #search-button {
+        width: 100%;
+    }
+}

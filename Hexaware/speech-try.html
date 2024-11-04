@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recorded Lesson Management</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Speech Recorded Lessons</h1>
+        
+        <!-- Search and Add Lesson Section -->
+        <div class="search-container">
+            <input type="text" id="search-bar" placeholder="Enter lesson title">
+            <button id="search-button">Search</button>
+            <button id="add-lesson-button" class="add-lesson-btn">Add New Lesson</button>
+            <button id="add-recorded-lesson-button" class="add-lesson-btn">Add Recorded Lesson</button>
+        </div>
+
+        <!-- Filter by Difficulty Dropdown -->
+        <select id="filter-difficulty">
+            <option value="">All Difficulties</option>
+            <option value="Easy">Easy</option>
+            <option value="Medium">Medium</option>
+            <option value="Hard">Hard</option>
+        </select>
+
+        <!-- Display Lessons Section -->
+        <div id="lessons-container">
+            <!-- Lessons will be dynamically added here by JavaScript -->
+        </div>
+
+        <!-- Recorded Lessons List Section -->
+        <h2>Recorded Lessons</h2>
+        <ul id="recorded-lessons-list">
+            <!-- Dynamically added list of recorded lessons will appear here -->
+        </ul>
+
+        <!-- Individual Lesson View Section -->
+        <section id="lesson-view" class="hidden">
+            <button id="back-button" class="back-btn">Back</button>
+            <div id="lesson-content">
+                <h2 id="lesson-title"></h2>
+                <!-- Video and Audio Player for Lesson -->
+                <video id="lesson-video" controls class="media-player">
+                    <source id="video-source" src="" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <audio id="lesson-audio" controls class="media-player">
+                    <source id="audio-source" src="" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+            <div class="navigation-buttons">
+                <button id="prev-button">Previous</button>
+                <button id="next-button">Next</button>
+                <button id="complete-lesson-button">Complete Lesson</button>
+            </div>
+        </section>
+    </div>
+
+    <!-- Link to your external JavaScript file -->
+    <script src="./speech-lesson.js"></script>
+</body>
+</html>

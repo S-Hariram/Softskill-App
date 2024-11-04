@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson Search</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Vocabulary Lessons</h1>
+        <div class="search-container">
+            <input type="text" id="search-bar" placeholder="Enter lesson title">
+            <button id="search-button">Search</button>
+        </div>
+        <select id="filter-difficulty">
+            <option value="">All Difficulties</option>
+            <option value="Easy">Easy</option>
+            <option value="Medium">Medium</option>
+            <option value="Hard">Hard</option>
+        </select>
+        
+        <!-- Display Lessons -->
+        <div id="lessons-container">
+            <!-- Lessons will be dynamically added here -->
+        </div>
+        
+        <!-- Lesson View Section -->
+        <section id="lesson-view" class="hidden">
+            <button id="back-button" class="back-btn">Back</button>
+            <div id="lesson-content">
+                <!-- Lesson content will be dynamically added here -->
+            </div>
+            <!-- Navigation and Completion Buttons -->
+            <div id="lesson-controls">
+                <button id="prev-button" class="control-btn" disabled>Previous</button>
+                <button id="next-button" class="control-btn" disabled>Next</button>
+                <button id="complete-lesson-button" class="control-btn">Complete Lesson</button>
+            </div>
+        </section>
+    </div>
+
+    <!-- Include PDF.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.4.2/mammoth.browser.min.js"></script>
+
+    <!-- Include DOCX.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/docxtemplater/3.22.1/docxtemplater.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pizzip/3.0.6/pizzip.js"></script>
+
+    <!-- Link to your external JavaScript file -->
+    <script src="./vocabulary-lesson.js"></script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soft Skill Test Platform</title>
+    <link rel="stylesheet" href="./attend-test.css">
+</head>
+<body>
+    <!-- Section Selection -->
+    <div id="sectionSelection">
+        <h1>Select a Section</h1>
+        <button onclick="displayTopics('vocabulary')">Vocabulary</button>
+        <button onclick="displayTopics('speech')">Speech</button>
+        <button onclick="displayTopics('pronunciation')">Pronunciation</button>
+        
+
+    </div>
+    <div>
+        <button id="add-lesson-button" class="add-lesson-btn">Add Lesson</button>
+
+    </div>
+    
+
+    <!-- Topic and Test Display -->
+    <div id="topicSection" style="display: none;">
+        <h2 id="selectedSection"></h2>
+        <ul id="topicList"></ul>
+
+
+    </div>
+
+    <!-- Test Interface -->
+    <div id="testSection" style="display: none;">
+        <h3>Question <span id="currentQuestionIndex"></span>/<span id="totalQuestions"></span></h3>
+        <p id="questionText"></p>
+        <ul id="optionsList"></ul>
+        <p>Time Remaining: <span id="timer">60</span> seconds</p>
+        <div id="progressBar">
+            <div id="progress" style="width: 0%;"></div>
+        </div>
+        <button onclick="saveAndNext()">Save & Next</button>
+        <button onclick="previousQuestion()">Previous</button>
+        <button onclick="submitTest()">Submit Test</button>
+        <!-- Pronunciation Recording UI -->
+        <div id="pronunciationRecording">
+            <button onclick=" startSpeechRecognition()" id="startRecordButton">Start Recording</button>
+            <button id="stopRecordButton" disabled>Stop Recording</button>
+            <button id="playbackButton" disabled>Play Back</button>
+            <audio id="audioPlayback" controls style="display: none;"></audio>
+        </div>
+    </div>
+
+    <!-- Score Display -->
+    <div id="scoreSection" style="display: none;">
+        <h2>Your Score</h2>
+        <p id="scoreText"></p>
+        <h3>Your Answers:</h3>
+        <ul id="answersList"></ul>
+        <button onclick="resetTest()">Retake Test</button>
+    </div>
+     <!-- Results Section -->
+    <div id="resultsSection" style="display:none;">
+        <h2>Past Results</h2>
+        <ul id="resultList"></ul>
+        <button id="backToSectionsButton">Back to Sections</button>
+    </div>
+
+
+    <script src="./attend-test.js"></script>
+</body>
+</html>
